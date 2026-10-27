@@ -282,7 +282,7 @@ contract ACPShareRegistry is UUPSUpgradeable, AccessControlUpgradeable {
                     abi.encodeCall(IPermissionCustomIdValidator.disabled, (header.issuer, header.revokerData))
                 );
             if (!ok || result.length != 32) return false;
-            if (abi.decode(result, (bool))) return false;
+            if (abi.decode(result, (uint256)) != 0) return false;
         }
 
         return true;
